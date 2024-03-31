@@ -2,7 +2,7 @@
   "name": "grades-calculator",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sunshineagoo17.github.io/grades-calculator/",
+  "homepage": "https://sunshineagoo17.github.io/grade-genius/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
