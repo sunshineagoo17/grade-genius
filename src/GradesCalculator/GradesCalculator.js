@@ -193,11 +193,11 @@ function GradesCalculator() {
             <span className="future-weight-value">{calculateFutureWeightTotal()}</span>
           </div>
           <div className="required-future-score">
-              Required Percentage per Future Project: {calculateRequiredFutureScore()}%
+              Required Grade (%) per Future Project to Attain Target: {calculateRequiredFutureScore()}%
           </div>
           {showAlert && (
               <div className="alert">
-                  Required Percentage per Future Project cannot exceed 100%.
+                  Required Grade (%) per Future Project cannot exceed 100%.
               </div>
           )}
           <button className="button button-reset" onClick={handleReset}>Reset</button>
