@@ -1,0 +1,140 @@
+.grade-calculator {
+  background-color: #f0f0f0;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  max-width: 37.5rem;
+  margin: 1.25rem auto;
+  display: flex;
+  flex-direction: column;
+
+  .project {
+    width: 100%;
+    border-bottom: 0.0625rem solid #eee;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .sprint-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.625rem;
+    }
+
+    .sprint {
+      flex-grow: 1;
+      margin-right: 0.625rem;
+    }
+  }
+
+  .input {
+    width: calc(100% - 1.375rem);
+    padding: 0.625rem;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.25rem;
+  }
+
+  .button {
+    min-width: 7.5rem;
+    padding: 0.625rem 0.9375rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    margin-top: 1rem;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+
+  .button-reset {
+    background-color: orange;
+    color: black;
+    &:hover {
+      background-color: rgb(255, 169, 9);
+    }
+  }
+
+  .delete-sprint {
+    margin-left: 0.5rem;
+    margin-top: 0;
+  }
+
+  .add-sprint,
+  .delete-project {
+    margin-top: .25rem;
+  }
+
+  .delete-project {
+    font-weight: bold;
+    font-size: .85rem;
+    border: .2rem solid rgb(166, 5, 5);
+  }
+
+  .add-sprint {
+    background-color: #007bff;
+    margin-right: 0.5rem;
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+
+  .delete-project, .delete-sprint {
+    background-color: #dc3545;
+    &:hover {
+      background-color: #c82333;
+    }
+  }
+
+  .add-project {
+    font-weight: bold;
+    font-size: 1rem;
+    border: .2rem solid navy;
+  }
+
+  .add-project, .current-grade {
+    align-self: center;
+    margin-top: 0.625rem;
+    width: 100%;
+  }
+
+  .current-grade {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5625rem;
+    height: 3rem;
+    color: white;
+    background-color: green;
+    border-radius: 0.25rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+}
+
+.target-grade-container {
+  margin-top: 1rem;
+}
+
+.future-weight-container {
+  margin-top: 0.75rem;
+  margin-bottom: .25rem;
+}
+
+.sprint-container {
+  margin-bottom: .5rem; 
+
+  .input {
+      margin-bottom: 0.5rem; 
+  }
+}
+
+.input__target-grade {
+  margin-top: .25rem;
+}
