@@ -47,6 +47,7 @@ $light-color: #ecf0f1; // Light Grey
     padding: 0.625rem;
     border: 0.0625rem solid $dark-color;
     border-radius: 0.25rem;
+    margin-right: 1.375rem; // Add margin on the right side of inputs
   }
 
   .button {
@@ -117,6 +118,7 @@ $light-color: #ecf0f1; // Light Grey
     align-self: center;
     margin-top: 0.625rem;
     width: 100%;
+    font-size: 1.25rem; // Adjust font size for tablet and desktop
   }
 
   .current-grade {
@@ -132,37 +134,69 @@ $light-color: #ecf0f1; // Light Grey
     margin-bottom: 1rem;
     font-weight: bold;
     border: .25rem solid green;
+
+    @media screen and (max-width: 768px) {
+      font-size: 1.25rem; // Decrease font size for tablet
+    }
+
+    @media screen and (max-width: 320px) {
+      font-size: 1rem; // Decrease font size for mobile
+    }
   }
-}
 
-.target-grade-container {
-  margin-top: 1rem;
-}
+  .target-grade-container {
+    margin-top: 1rem;
+  }
 
-.future-weight-container {
-  margin-top: 0.75rem;
-  margin-bottom: .25rem;
-}
+  .future-weight-container {
+    margin-top: 0.75rem;
+    margin-bottom: .25rem;
+  }
 
-.sprint-container {
-  margin-bottom: .5rem; 
+  .sprint-container {
+    margin-bottom: .5rem; 
 
-  .input {
+    .input {
       margin-bottom: 0.5rem; 
+    }
   }
-}
 
-.input__target-grade {
-  margin-top: .25rem;
-}
+  .input__target-grade {
+    margin-top: .25rem;
+  }
 
-.alert {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 2rem;
-  margin-top: .5rem;
-  font-weight: bold;
-  border: .25rem solid #e74c3c;
-  border-radius: .25rem;
+  .alert {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    margin-top: .5rem;
+    font-weight: bold;
+    border: .25rem solid #e74c3c;
+    border-radius: .25rem;
+    font-size: 1rem; 
+    padding: .25rem;
+
+    @media screen and (max-width: 768px) {
+      font-size: 1rem; 
+    }
+
+    @media screen and (max-width: 320px) {
+      font-size: 0.875rem; 
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .input {
+      width: calc(100% - 1.375rem); 
+      margin-right: 1.375rem; 
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    .input {
+      width: calc(100% - 0.75rem); 
+      margin-right: 0.75rem; 
+    }
+  }
 }
