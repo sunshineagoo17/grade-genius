@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/grade-genius/static/css/main.cc026cf3.css",
-    "main.js": "/grade-genius/static/js/main.46a2876c.js",
+    "main.js": "/grade-genius/static/js/main.ae597153.js",
     "static/media/angry-dev.webp": "/grade-genius/static/media/angry-dev.2b25590d3d6a885bd726.webp",
     "index.html": "/grade-genius/index.html",
     "main.cc026cf3.css.map": "/grade-genius/static/css/main.cc026cf3.css.map",
-    "main.46a2876c.js.map": "/grade-genius/static/js/main.46a2876c.js.map"
+    "main.ae597153.js.map": "/grade-genius/static/js/main.ae597153.js.map"
   },
   "entrypoints": [
     "static/css/main.cc026cf3.css",
-    "static/js/main.46a2876c.js"
+    "static/js/main.ae597153.js"
   ]
 }
