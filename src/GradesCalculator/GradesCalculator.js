@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import "./GradesCalculator.scss";
 
 function GradesCalculator() {
@@ -7,6 +7,7 @@ function GradesCalculator() {
         return savedProjects ? JSON.parse(savedProjects) : [];
     });
     const [targetGrade, setTargetGrade] = useState('');
+    const [showAlert, setShowAlert] = useState(false);
 
     useEffect(() => {
         sessionStorage.setItem('projects', JSON.stringify(projects));
@@ -92,44 +93,51 @@ function GradesCalculator() {
         return totalWeight > 0 ? ((totalAchieved / totalWeight) * 100).toFixed(2) : '0.00';
     };
 
-    const calculateFutureWeightTotal = () => {
+    const calculateFutureWeightTotal = useCallback(() => {
         let totalWeightReceived = 0;
-
+    
         projects.forEach(project => {
             const overall = parseFloat(project.overall) || 0;
             totalWeightReceived += overall;
         });
-
+    
         return (100 - totalWeightReceived).toFixed(2);
-    };
+    }, [projects]);
 
-    const calculateRequiredFutureScore = () => {
+    const calculateRequiredFutureScore = useCallback(() => {
         if (!targetGrade || isNaN(targetGrade)) return "N/A";
-
+    
         const futureWeightTotal = parseFloat(calculateFutureWeightTotal());
         let totalAchieved = 0;
         let totalWeight = 0;
-
+    
         projects.forEach(project => {
             const projectWeight = parseFloat(project.overall) || 0;
             let projectScore = 0;
-
+    
             project.sprints.forEach(sprint => {
                 const sprintScore = parseFloat(sprint.score) || 0;
                 projectScore += sprintScore;
             });
-
+    
             projectScore = project.sprints.length > 0 ? (projectScore / project.sprints.length) : 0;
             totalAchieved += (projectScore * projectWeight) / 100;
             totalWeight += projectWeight;
         });
-
+    
         const requiredTotal = targetGrade * (totalWeight + futureWeightTotal) / 100;
         const requiredFutureScore = (requiredTotal - totalAchieved) / futureWeightTotal * 100;
-
+    
         return isFinite(requiredFutureScore) ? requiredFutureScore.toFixed(2) : "N/A";
-    };
+    }, [targetGrade, projects, calculateFutureWeightTotal]);    
 
+    useEffect(() => {
+        setShowAlert(prevShowAlert => {
+            const requiredFutureScore = calculateRequiredFutureScore(); // Include calculateRequiredFutureScore
+            return targetGrade && targetGrade !== '' && (requiredFutureScore === "N/A" || requiredFutureScore > 100);
+        }); // Show alert if targetGrade is provided, and required future score exceeds 100 or is "N/A"
+    }, [targetGrade, projects, calculateRequiredFutureScore]);    
+    
     return (
       <div className="grade-calculator">
           <p className='title'>Input your Project, the Weight % and your Grade</p>
@@ -167,7 +175,7 @@ function GradesCalculator() {
               </div>
           ))}
           <button className="button add-project" onClick={handleAddProject}>Add Project</button>
-          <div className="current-grade"><b>Current Grade: {calculateOverallGrade()}%</b></div>
+          <div className="current-grade">Current Grade: {calculateOverallGrade()}%</div>
           <div className="target-grade-container">
               <label className="target-grade-label">
                   Target Grade:
@@ -187,6 +195,11 @@ function GradesCalculator() {
           <div className="required-future-score">
               Required Percentage per Future Project: {calculateRequiredFutureScore()}%
           </div>
+          {showAlert && (
+              <div className="alert">
+                  Required Percentage per Future Project cannot exceed 100%.
+              </div>
+          )}
           <button className="button button-reset" onClick={handleReset}>Reset</button>
       </div>
   );
