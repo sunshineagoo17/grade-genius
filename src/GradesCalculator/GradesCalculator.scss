@@ -1,3 +1,14 @@
+h1,
+h2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
 .grade-calculator {
   background-color: #f0f0f0;
   padding: 1.25rem;
@@ -7,6 +18,7 @@
   margin: 1.25rem auto;
   display: flex;
   flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   .project {
     width: 100%;
@@ -54,8 +66,9 @@
   }
 
   .button-reset {
-    background-color: orange;
+    background-color: rgb(250, 184, 61);
     color: black;
+    font-weight: bold;
     &:hover {
       background-color: rgb(255, 169, 9);
     }
@@ -80,6 +93,7 @@
   .add-sprint {
     background-color: #007bff;
     margin-right: 0.5rem;
+    height: 2.6rem;
     &:hover {
       background-color: #0056b3;
     }
