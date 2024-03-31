@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Project Grade Calculator</h1>
+        <h1>Grade Genius</h1>
       </header>
       <img alt="angry developer" className="dev-img" src={AngryDev} />
       <main>
