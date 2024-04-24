@@ -18,13 +18,13 @@ function GradesCalculator() {
             id: projects.length, 
             name: '', 
             overall: '', 
-            sprints: [{ id: 0, score: '' }]
+            sprints: [{ id: 0, score: '', weight: '' }]
         };
         setProjects([...projects, newProject]);
     };
 
     const handleAddSprint = (projectIndex) => {
-        const newSprint = { id: projects[projectIndex].sprints.length, score: '' };
+        const newSprint = { id: projects[projectIndex].sprints.length, score: '', weight: '' };
         const updatedProjects = projects.map((project, index) => 
             index === projectIndex ? { ...project, sprints: [...project.sprints, newSprint] } : project
         );
@@ -38,11 +38,11 @@ function GradesCalculator() {
         setProjects(updatedProjects);
     };
 
-    const handleSprintChange = (projectIndex, sprintIndex, value) => {
+    const handleSprintChange = (projectIndex, sprintIndex, field, value) => {
         const updatedProjects = projects.map((project, pIndex) => {
             if (pIndex === projectIndex) {
                 const updatedSprints = project.sprints.map((sprint, sIndex) => 
-                    sIndex === sprintIndex ? { ...sprint, score: value } : sprint
+                    sIndex === sprintIndex ? { ...sprint, [field]: value } : sprint
                 );
                 return { ...project, sprints: updatedSprints };
             }
@@ -79,14 +79,17 @@ function GradesCalculator() {
         projects.forEach(project => {
             const projectWeight = parseFloat(project.overall) || 0;
             let projectScore = 0;
+            let projectWeightReceived = 0;
 
             project.sprints.forEach(sprint => {
                 const sprintScore = parseFloat(sprint.score) || 0;
-                projectScore += sprintScore;
+                const sprintWeight = parseFloat(sprint.weight) || 0;
+                projectScore += (sprintScore * sprintWeight) / 100;
+                projectWeightReceived += sprintWeight;
             });
 
-            projectScore = project.sprints.length > 0 ? (projectScore / project.sprints.length) : 0;
-            totalAchieved += (projectScore * projectWeight) / 100;
+            projectScore = projectWeightReceived > 0 ? (projectScore / projectWeightReceived) : 0;
+            totalAchieved += (projectScore * projectWeight);
             totalWeight += projectWeight;
         });
 
@@ -114,14 +117,17 @@ function GradesCalculator() {
         projects.forEach(project => {
             const projectWeight = parseFloat(project.overall) || 0;
             let projectScore = 0;
+            let projectWeightReceived = 0;
     
             project.sprints.forEach(sprint => {
                 const sprintScore = parseFloat(sprint.score) || 0;
-                projectScore += sprintScore;
+                const sprintWeight = parseFloat(sprint.weight) || 0;
+                projectScore += (sprintScore * sprintWeight) / 100;
+                projectWeightReceived += sprintWeight;
             });
     
-            projectScore = project.sprints.length > 0 ? (projectScore / project.sprints.length) : 0;
-            totalAchieved += (projectScore * projectWeight) / 100;
+            projectScore = projectWeightReceived > 0 ? (projectScore / projectWeightReceived) : 0;
+            totalAchieved += (projectScore * projectWeight);
             totalWeight += projectWeight;
         });
     
@@ -163,8 +169,15 @@ function GradesCalculator() {
                               className="input sprint-score"
                               type="text"
                               value={sprint.score}
-                              onChange={(e) => handleSprintChange(projectIndex, sprintIndex, e.target.value)}
+                              onChange={(e) => handleSprintChange(projectIndex, sprintIndex, 'score', e.target.value)}
                               placeholder="Sprint Grade Received (%)"
+                          />
+                          <input
+                              className="input sprint-weight"
+                              type="text"
+                              value={sprint.weight}
+                              onChange={(e) => handleSprintChange(projectIndex, sprintIndex, 'weight', e.target.value)}
+                              placeholder="Sprint Weight (%)"
                           />
                           <button className="button delete-sprint" onClick={() => handleDeleteSprint(projectIndex, sprintIndex)}>Delete Sprint</button>
                       </div>
