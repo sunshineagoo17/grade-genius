@@ -146,7 +146,7 @@ function GradesCalculator() {
     
     return (
       <div className="grade-calculator">
-          <p className='title'>Input your Project, the Weight % and your Grade %</p>
+          <p className='title'>Input your Project, Weight, Grade, & Sprint Weight</p>
           {projects.map((project, projectIndex) => (
               <div key={project.id} className="project">
                   <input
