@@ -3,14 +3,14 @@ import "./GradesCalculator.scss";
 
 function GradesCalculator() {
     const [projects, setProjects] = useState(() => {
-        const savedProjects = sessionStorage.getItem('projects');
+        const savedProjects = localStorage.getItem('projects');
         return savedProjects ? JSON.parse(savedProjects) : [];
     });
     const [targetGrade, setTargetGrade] = useState('');
     const [showAlert, setShowAlert] = useState(false);
 
     useEffect(() => {
-        sessionStorage.setItem('projects', JSON.stringify(projects));
+        localStorage.setItem('projects', JSON.stringify(projects));
     }, [projects]);
 
     const handleAddProject = () => {
