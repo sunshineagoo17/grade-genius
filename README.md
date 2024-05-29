@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# Grade Genius
+Grade Genius is a React application designed to help BrainStation students calculate their grades based on multiple projects and sprints.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to Use:
 
-## Available Scripts
+### Access the App:
+Visit the app on GitHub Pages:
+Open https://sunshineagoo17.github.io/grade-genius/ to view it in your browser.
 
-In the project directory, you can run:
+### Quick Start:
+- All you have to do is enter the grade that you've received, the weight of your sprint, and you're good to go.
 
-### `npm start`
+### Add a Project:
+- Click the "Add Project" button to add a new project.
+- Enter the project name and the project's overall weight as a percentage.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Add Sprints to a Project:
+- Click the "Add Sprint" button within a project to add a new sprint.
+- Enter the sprint grade received as a percentage and the sprint's weight.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Edit and Delete:
+- Modify any project or sprint details by clicking into the field and updating the value.
+- Delete a sprint by clicking the "Delete Sprint" button next to it.
+- Delete a project by clicking the "Delete Project" button.
 
-### `npm test`
+### Calculate Grades:
+- The "Current Grade" section will automatically update and display the overall grade.
+- Input a target grade to see the required future score per project to achieve the target grade.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Reorder Projects
+- Drag and drop projects to reorder them by clicking and holding on a project and moving it to a new position.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Reset All Data
+- Click the "Reset All Grades" button to clear all project and sprint data.
