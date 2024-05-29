@@ -10,6 +10,7 @@ $light-color: #ecf0f1;
 $sec-light-color: white;
 $border-color: #ccc;
 $border-radius: 0.25rem;
+$padding-very-small: 0.25rem;
 $padding-small: 0.625rem;
 $padding-medium: 1.25rem;
 
@@ -27,8 +28,6 @@ $padding-medium: 1.25rem;
   .project {
     width: 100%;
     border-bottom: 0.0625rem solid $dark-color;
-    padding-bottom: $padding-medium;
-    margin-bottom: $padding-medium;
 
     &:last-child {
       border-bottom: none;
@@ -110,7 +109,7 @@ $padding-medium: 1.25rem;
     }
   }
 
-  .delete-sprint, .add-sprint, .delete-project {
+  .delete-sprint {
     margin: $padding-small auto;
   }
 
@@ -132,9 +131,9 @@ $padding-medium: 1.25rem;
     }
   }
 
-  @media screen and (max-width: 328px) {
+  @media screen and (max-width: 336px) {
     .add-sprint {
-      margin-right: 0.025rem;
+      margin-right: 0;
     }
   }
 
@@ -245,6 +244,13 @@ $padding-medium: 1.25rem;
       margin-right: 0.75rem;
     }
   }
+
+  @media screen and (max-width: 345px) {
+    .delete-project {
+      font-size: 0.75rem;
+      padding: $padding-very-small;
+    }
+  }
 }
 
 /* Styles for draggable project */
@@ -263,4 +269,11 @@ $padding-medium: 1.25rem;
   &.is-dragging {
     box-shadow: 0 0 20px rgba($sec-dark-color, 0.3);
   }
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: -.5rem;
 }
