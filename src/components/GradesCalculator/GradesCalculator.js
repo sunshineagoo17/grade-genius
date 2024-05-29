@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import "./GradesCalculator.scss";
+import DraggableProject from '../DraggableProject/DraggableProject';
+import './GradesCalculator.scss';
 
 function GradesCalculator() {
     const [projects, setProjects] = useState(() => {
@@ -12,6 +13,13 @@ function GradesCalculator() {
     useEffect(() => {
         localStorage.setItem('projects', JSON.stringify(projects));
     }, [projects]);
+
+    const moveProject = (fromIndex, toIndex) => {
+        const updatedProjects = [...projects];
+        const [movedProject] = updatedProjects.splice(fromIndex, 1);
+        updatedProjects.splice(toIndex, 0, movedProject);
+        setProjects(updatedProjects);
+    };
 
     const handleAddProject = () => {
         const newProject = {
@@ -148,7 +156,7 @@ function GradesCalculator() {
       <div className="grade-calculator">
           <p className='title'>Input your Project, Weight, Grade, & Sprint Weight</p>
           {projects.map((project, projectIndex) => (
-              <div key={project.id} className="project">
+              <DraggableProject key={project.id} index={projectIndex} moveProject={moveProject} project={project}>
                   <input
                       className="input project-name"
                       type="text"
@@ -182,10 +190,11 @@ function GradesCalculator() {
                           <button className="button delete-sprint" onClick={() => handleDeleteSprint(projectIndex, sprintIndex)}>Delete Sprint</button>
                       </div>
                   ))}
-                  {/* Single "Add Sprint" button per project */}
-                  <button className="button add-sprint" onClick={() => handleAddSprint(projectIndex)}>Add Sprint</button>
-                  <button className="button delete-project" onClick={() => handleDeleteProject(projectIndex)}>Delete Project</button>
-              </div>
+                  <div className="buttons-container">
+                    <button className="button add-sprint" onClick={() => handleAddSprint(projectIndex)}>Add Sprint</button>
+                    <button className="button delete-project" onClick={() => handleDeleteProject(projectIndex)}>Delete Project</button>
+                  </div>
+              </DraggableProject>
           ))}
           <button className="button add-project" onClick={handleAddProject}>Add Project</button>
           <div className="current-grade">Current Grade: {calculateOverallGrade()}%</div>
@@ -213,9 +222,9 @@ function GradesCalculator() {
                   Required Grade (%) per Future Project cannot exceed 100%.
               </div>
           )}
-          <button className="button button-reset" onClick={handleReset}>Reset</button>
+          <button className="button button-reset" onClick={handleReset}>Reset All Grades</button>
       </div>
-  );
+    );
 }
 
 export default GradesCalculator;
